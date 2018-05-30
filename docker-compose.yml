@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  web:
+    image: nginx:latest
+    ports:
+        - "8002:80"
+    volumes:
+        - .:/var/www/html
+        - ./docker/config/nginx:/etc/nginx/conf.d
+        - ./docker/logs/nginx:/var/log/nginx
+    links:
+        - php
+
+  php:
+    image: php:7-fpm
+    volumes:
+        - .:/var/www/html
+        - ./docker/logs/php:/var/log/php
+    links:
+        - composer
+
+  composer:
+    image: composer:latest
+    volumes:
+        - ~/.composer/cache:/root/.composer/cache
+        - ~/.composer/auth.json:/root/.composer/auth.json
