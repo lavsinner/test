@@ -2,6 +2,8 @@
 
 namespace classes\vehicle;
 
+use classes\fuel\AbstractFuelType;
+
 abstract class AbstractVehicle
 {
 	public $name;

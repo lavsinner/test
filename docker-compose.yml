@@ -3,7 +3,7 @@ services:
   web:
     image: nginx:latest
     ports:
-        - "8002:80"
+        - "8002:82"
     volumes:
         - .:/var/www/html
         - ./docker/config/nginx:/etc/nginx/conf.d
@@ -16,11 +16,3 @@ services:
     volumes:
         - .:/var/www/html
         - ./docker/logs/php:/var/log/php
-    links:
-        - composer
-
-  composer:
-    image: composer:latest
-    volumes:
-        - ~/.composer/cache:/root/.composer/cache
-        - ~/.composer/auth.json:/root/.composer/auth.json
